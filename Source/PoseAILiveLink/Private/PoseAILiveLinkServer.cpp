@@ -183,6 +183,7 @@ void PoseAILiveLinkServer::ReceiveUDPDelegate(const FString& recvMessage, const 
 			lastConnection = FDateTime::Now();
 			source_->UpdatePose(rig, jsonObject);
 			UPoseAIEventDispatcher::GetDispatcher()->BroadcastFrameReceived(source_->GetSubjectName());
+			UE_LOG(LogTemp, Warning, TEXT("[poseai] frame data, broadcasted frame received. "));
 		}
 		else if (ExtractConnectionName(jsonObject, endpointRecv) == source_->GetConnectionName(port))
 		{
